@@ -1,332 +1,72 @@
-
-<!--version1-->
-
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ash Grill — Roasting Jack</title>
+  <title data-key="brandTitle">Ash Grill</title>
 
-  <!-- Google font -->
+  <!-- Google font (Montserrat) -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --orange: #ff7a00;   /* primary - tweak to match logo perfectly */
-      --orange-dark: #e26700;
-      --black: #000000;
-      --bg: #0b0b0b;
-      --muted: #f4f4f4;
-      --card-radius: 14px;
-      --max-width: 1100px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, var(--bg) 0%, #090909 100%);
-      color: var(--muted);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-    }
-
-    .container{
-      width:90%;
-      max-width:var(--max-width);
-      margin:0 auto;
-    }
-
-    /* Header / Hero */
-    header{
-      padding:48px 0 28px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    .logo-wrap{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .logo{
-      width:84px;
-      height:84px;
-      border-radius:50%;
-      overflow:hidden;
-      flex-shrink:0;
-      background: var(--orange);
-      display:grid;
-      place-items:center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    }
-    .logo img{width:74%; height:auto; display:block}
-    .brand-title{
-      font-weight:900;
-      font-size:20px;
-      color:var(--muted);
-      letter-spacing:0.6px;
-    }
-    .nav-cta{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .btn{
-      border: none;
-      padding:12px 18px;
-      font-weight:700;
-      border-radius:10px;
-      cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .btn-primary{
-      background: linear-gradient(180deg,var(--orange), var(--orange-dark));
-      color:var(--black);
-      box-shadow: 0 8px 18px rgba(255,122,0,0.15);
-    }
-    .btn-primary:hover{transform:translateY(-3px)}
-    .btn-ghost{
-      background:transparent;
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,0.06);
-    }
-
-    /* Hero large */
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      align-items:center;
-      gap:36px;
-      margin-top:18px;
-      margin-bottom:48px;
-    }
-    .hero-left{
-      padding:28px;
-    }
-    .eyebrow{
-      color:var(--orange);
-      font-weight:700;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:12px;
-    }
-    h1{
-      font-size:44px;
-      line-height:1.02;
-      margin:0 0 16px;
-      color:var(--muted);
-    }
-    p.lead{
-      color: #dcdcdc;
-      margin:0 0 22px;
-      max-width:680px;
-    }
-
-    .hero-ctas{display:flex; gap:12px; align-items:center}
-    .small-note{font-size:13px; color:#cfcfcf; margin-top:12px}
-
-    .hero-right{
-      background: linear-gradient(180deg, rgba(255,122,0,0.07), rgba(0,0,0,0.6));
-      border-radius:18px;
-      padding:22px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-    }
-
-    .product-card{
-      display:flex;
-      gap:18px;
-      align-items:center;
-    }
-    .product-image{
-      width:140px;
-      height:140px;
-      border-radius:12px;
-      background: linear-gradient(180deg,#111,#222);
-      display:grid;
-      place-items:center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    .product-image img{max-width:100%; max-height:100%}
-    .prod-meta{flex:1}
-    .price{font-size:20px; font-weight:900; color:var(--orange); margin-top:6px}
-
-    /* Features / Branding */
-    .features{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:28px;
-      margin:46px 0;
-      align-items:center;
-    }
-    .features .text h2{font-size:28px; margin:0 0 12px}
-    .cards{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .feature{
-      background: linear-gradient(180deg,#0f0f0f, #141414);
-      padding:16px;
-      border-radius:12px;
-      min-width:160px;
-      flex:1;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.02);
-    }
-    .feature h3{margin:0 0 8px; font-size:15px; color:var(--orange)}
-    .feature p{margin:0; color:#bfbfbf; font-size:14px}
-
-    /* Order section */
-    .order-section{
-      margin:36px 0 80px;
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:28px;
-      align-items:start;
-    }
-    .order-form{
-      background: linear-gradient(180deg,#0c0c0c,#131313);
-      padding:18px;
-      border-radius:14px;
-      box-shadow: 0 12px 34px rgba(0,0,0,0.6);
-    }
-    label{display:block; font-size:13px; color:#cfcfcf; margin-top:10px}
-    input[type="text"], input[type="tel"], textarea, select{
-      width:100%;
-      padding:10px 12px;
-      margin-top:8px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.06);
-      background:#0b0b0b;
-      color:var(--muted);
-      outline:none;
-    }
-    input[type="number"]{
-      width:100px;
-      padding:8px 10px;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,0.06);
-      background:#0b0b0b;
-      color:var(--muted);
-    }
-    .order-actions{
-      display:flex;
-      gap:12px;
-      margin-top:14px;
-      align-items:center;
-    }
-
-    /* Footer */
-    footer{
-      margin-top:56px;
-      padding:28px 0;
-      border-top:1px solid rgba(255,255,255,0.03);
-      color:#bdbdbd;
-    }
-    .socials{display:flex; gap:12px; align-items:center}
-    .chip{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.03);
-      font-size:13px;
-      color:#ddd;
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    /* Modal */
-    .modal-backdrop{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      background:rgba(0,0,0,0.6);
-      z-index:40;
-      padding:24px;
-    }
-    .modal{
-      background:#0b0b0b;
-      border-radius:12px;
-      padding:22px;
-      max-width:520px;
-      width:100%;
-      box-shadow:0 20px 60px rgba(0,0,0,0.7);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    .modal h3{margin:0 0 8px}
-    .modal p{color:#cfcfcf; margin:0 0 14px}
-
-    /* small screens */
-    @media (max-width:920px){
-      .hero{grid-template-columns: 1fr; padding-bottom:6px}
-      .features{grid-template-columns:1fr}
-      .order-section{grid-template-columns:1fr}
-      .logo{width:68px;height:68px}
-      h1{font-size:34px}
-    }
-  </style>
+  
+  <!-- CSS File -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <div class="logo-wrap">
-        <div class="logo" aria-hidden="true">
-          <!-- Replace logo.png with your actual logo filename -->
-          <img src="logo.png" alt="Ash Grill logo">
-        </div>
-        <div>
-          <div class="brand-title">ASH GRILL</div>
-          <div style="font-size:12px;color:#c9c9c9">Premium Roasting Jack</div>
-        </div>
-      </div>
+  <!-- NEW: Video Background Container -->
+  <div class="video-background-container">
+    <div class="video-background-overlay"></div>
+    <video 
+      data-video-src="backgroundVideoPath" 
+      autoplay 
+      loop 
+      muted 
+      playsinline>
+      <!-- The src will be set by script.js -->
+    </video>
+  </div>
 
-      <div class="nav-cta">
-        <button class="btn btn-ghost" onclick="scrollToSection('branding')">About</button>
-        <button class="btn btn-primary" onclick="scrollToSection('order')">Order Now</button>
-      </div>
+  <!-- NEW: Content Wrapper -->
+  <div class="content-wrap">
+    <div class="container">
+      <header>
+        <div class="logo-wrap">
     </header>
 
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-left">
-        <div class="eyebrow">Pro-grade Roasting</div>
-        <h1 id="hero-heading">The Roasting Jack Built for Real Smoke & Heat</h1>
-        <p class="lead">
-          Whether you're a weekend pitmaster or a pro chef, ASH GRILL's roasting jack delivers consistent rotation, rock-solid build, and easy setup — engineered to roast evenly and last for years.
-        </p>
+        <div class="eyebrow" data-key="heroEyebrow"></div>
+        <h1 id="hero-heading" data-key="heroTitle"></h1>
+        <p class="lead" data-key="heroLead"></p>
 
         <div class="hero-ctas">
-          <button class="btn btn-primary" onclick="scrollToSection('order')">Order Your Jack</button>
-          <button class="btn btn-ghost" onclick="scrollToSection('branding')">Learn More</button>
+          <button class="btn btn-primary" onclick="scrollToSection('order')" data-key="heroCtaOrder"></button>
+          <button class="btn btn-ghost" onclick="scrollToSection('branding')" data-key="heroCtaLearn"></button>
         </div>
 
-        <div class="small-note">Free support & warranty details available. Local delivery or pickup.</div>
+        <div class="small-note" data-key="heroNote"></div>
       </div>
 
       <aside class="hero-right" aria-label="Product card">
         <div class="product-card">
           <div class="product-image" id="prod-image">
-            <!-- If you have a product photo, change src -->
-            <img src="logo.png" alt="Ash Grill roasting jack preview">
+            <!-- Logo path is now set by config.json -->
+            <img data-img-src="logoPath" alt="Ash Grill roasting jack preview">
           </div>
 
           <div class="prod-meta">
-            <div style="font-weight:900; font-size:16px">ASH GRILL — Roasting Jack</div>
-            <div class="price" id="priceText">1500LE</div>
-            <div style="color:#bdbdbd; font-size:13px; margin-top:6px">Stainless gears • Heavy duty spindle • Easy install</div>
+            <div style="font-weight:900; font-size:16px" data-key="productName"></div>
+            
+            <div class="price" id="priceText">
+              <span class="price-new"></span>
+              <span class="price-old"></span>
+            </div>
 
-            <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
-              <label for="qty" style="color:#cfcfcf; font-size:13px">Qty</label>
-              <input id="qty" type="number" min="1" value="1" />
-              <button class="btn btn-primary" onclick="openOrderFromCard()">Order</button>
+            <div style="color:#bdbdbd; font-size:13px; margin-top:6px" data-key="productMeta"></div>
+
+            <div style="margin-top:12px;">
+              <button class="btn btn-primary" onclick="scrollToSection('order')">Check Order Options</button>
             </div>
           </div>
         </div>
@@ -336,294 +76,98 @@
     <!-- BRANDING / FEATURES -->
     <section class="features container" id="branding" aria-labelledby="brand-heading">
       <div class="text">
-        <h2 id="brand-heading">Built to Roast — Not to Break</h2>
-        <p style="color:#d0d0d0; margin-top:6px; max-width:520px">
-          ASH GRILL focuses on simplicity and reliability. From the stainless gears to the reinforced motor housing, every component is chosen to withstand heat, grease, and heavy use.
-        </p>
+        <h2 id="brand-heading" data-key="featuresTitle"></h2>
+        <p style="color:#d0d0d0; margin-top:6px; max-width:520px" data-key="featuresLead"></p>
 
         <div style="margin-top:18px" class="cards">
           <div class="feature">
-            <h3>🔥 Heat-Proof Design</h3>
-            <p>All critical parts use high-temp materials to keep performance consistent under extreme heat.</p>
+            <h3 data-key="feature1Title"></h3>
+            <p data-key="feature1Text"></p>
           </div>
           <div class="feature">
-            <h3>⚙️ Industrial Strength</h3>
-            <p>Robust gearing and bearings minimize wear so your jack runs quietly for years.</p>
+            <h3 data-key="feature2Title"></h3>
+            <p data-key="feature2Text"></p>
           </div>
           <div class="feature">
-            <h3>🔧 Easy Install</h3>
-            <p>Designed for quick mounting to most grills and spit spits — instructions included.</p>
+            <h3 data-key="feature3Title"></h3>
+            <p data-key="feature3Text"></p>
           </div>
           <div class="feature">
-            <h3>📦 Warranty & Support</h3>
-            <p>One-year limited warranty and direct support for setup and maintenance.</p>
+            <h3 data-key="feature4Title"></h3>
+            <p data-key="feature4Text"></p>
           </div>
         </div>
       </div>
 
       <div style="display:grid; place-items:center;">
-        <div style="width:100%; max-width:420px; border-radius:16px; padding:18px; background:linear-gradient(180deg,#0f0f0f,#121212); box-shadow:0 12px 30px rgba(0,0,0,0.6);">
-          <div style="font-weight:900; color:var(--orange); font-size:18px">Specs</div>
-          <ul style="color:#d0d0d0; padding-left:18px; margin-top:8px; line-height:1.6">
-            <li>Motor: 12V heavy torque</li>
-            <li>Gearing: Stainless steel, sealed</li>
-            <li>Max Load: up to 40kg / 88lbs</li>
-            <li>Mounting: Universal brackets included</li>
+        <!-- ⬇️ ADDED 'specs-box' class here ⬇️ -->
+        <div class="specs-box" style="width:100%; max-width:420px; border-radius:16px; padding:18px; box-shadow:0 12px 30px rgba(0,0,0,0.6);">
+          <div style="font-weight:900; color:var(--orange); font-size:18px" data-key="specsTitle"></div>
+          <ul style="color:#d0d0d0; margin-top:8px; line-height:1.6">
+            <li data-key="spec1"></li>
+            <li data-key="spec2"></li>
+            <li data-key="spec3"></li>
+            <li data-key="spec4"></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ORDER -->
-    <section class="order-section container" id="order" aria-labelledby="order-heading">
-      <div class="order-form" aria-label="Order form">
-        <h2 id="order-heading" style="margin:0 0 8px">Order Your Roasting Jack</h2>
-        <p style="color:#cfcfcf; margin:0 0 12px">Fill the details below — we'll confirm delivery & payment after you submit.</p>
-
-        <form id="orderForm" onsubmit="submitOrder(event)">
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required>
-
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" placeholder="+20 1xxxxxxxxx" required>
-
-          <label for="address">Delivery address</label>
-          <textarea id="address" name="address" rows="3" placeholder="Street, city, building / pickup location" required></textarea>
-
-          <label for="quantity">Quantity</label>
-          <input id="quantity" name="quantity" type="number" min="1" value="1" required>
-
-          <label for="notes">Notes (optional)</label>
-          <textarea id="notes" name="notes" rows="2" placeholder="Any special instructions"></textarea>
-
-          <div class="order-actions">
-            <button type="submit" class="btn btn-primary">Place Order — LE<span id="total">1500</span></button>
-            <button type="button" class="btn btn-ghost" onclick="clearForm()">Clear</button>
-          </div>
-
-          <div style="margin-top:12px; color:#bfbfbf; font-size:13px">
-            We’ll call to confirm availability and delivery time. Payment on delivery or bank transfer.
-          </div>
-        </form>
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section container" id="gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" data-key="galleryTitle"></h2>
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Images and Videos will be injected here by script.js -->
       </div>
+    </section>
 
-      <!-- Right column: summary / quick-buy -->
-      <aside style="display:flex; flex-direction:column; gap:14px;">
-        <div style="background:linear-gradient(180deg,#0f0f0f,#121212); padding:18px; border-radius:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <div style="font-weight:800;">ASH GRILL Roasting Jack</div>
-              <div style="color:#cfcfcf; font-size:13px">Ready to ship</div>
-            </div>
-            <div style="font-weight:900; color:var(--orange); font-size:20px">1500LE</div>
-          </div>
+    <!-- ORDER SECTION (Simplified) -->
+    <section class="order-section container" id="order" aria-labelledby="order-heading">
+      <div class="order-box">
+        <h2 id="order-heading" data-key="orderTitle"></h2>
+        <p style="color:#cfcfcf; margin:0 0 12px" data-key="orderLead"></p>
 
-          <div style="margin-top:12px; display:flex; gap:8px; align-items:center;">
-            <label style="color:#cfcfcf; font-size:13px">Qty</label>
-            <input id="sidebarQty" type="number" min="1" value="1" style="width:72px; padding:8px; border-radius:8px; background:#0b0b0b; border:1px solid rgba(255,255,255,0.06); color:var(--muted)" />
-            <button class="btn btn-primary" style="margin-left:auto" onclick="addToCart()">Add to Order</button>
-          </div>
+        <div class="order-links">
+          <a href="https://ig.me/m/ashgrill.eg" target="_blank" class="btn btn-primary" data-key="orderBtnInstagram"></a>
+          <a href="https://m.me/61579254212969" target="_blank" class="btn btn-primary" data-key="orderBtnMessenger"></a>
         </div>
-
-        <div style="background:linear-gradient(180deg,#0f0f0f,#121212); padding:18px; border-radius:12px;">
-          <div style="font-weight:900; color:#ddd">Order Summary</div>
-          <div id="summary" style="color:#cfcfcf; margin-top:10px">No items yet.</div>
-        </div>
-
-        <div style="background:linear-gradient(180deg,#0f0f0f,#121212); padding:16px; border-radius:12px; text-align:center;">
-          <div style="font-size:13px; color:#cfcfcf; margin-bottom:8px">Questions before ordering?</div>
-          <div class="chip">Call: +20 1004559444</div>
-        </div>
-      </aside>
+      </div>
     </section>
 
     <footer class="container">
       <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
         <div>
-          <div style="font-weight:900; color:var(--orange)">ASH GRILL</div>
-          <div style="font-size:13px; color:#cfcfcf">Built for real smoke.</div>
+          <div style="font-weight:900; color:var(--orange)" data-key="footerTitle"></div>
+          <div style="font-size:13px; color:#cfcfcf" data-key="footerSubtitle"></div>
         </div>
 
         <div style="display:flex; gap:18px; align-items:center">
           <div class="socials">
-            <a href="https://www.instagram.com/ashgrill.eg/" class="chip" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61579254212969" class="chip" target="_blank">FB</a>
-            <a href="https://wa.me/<=+201004559444>" class="chip" target="_blank">WhatsApp</a>
+            <a href="https://ig.me/m/ashgrill.eg" class="chip" target="_blank" data-key="footerIG"></a>
+            <a href="https://www.facebook.com/profile.php?id=61579254212969" class="chip" target="_blank" data-key="footerFB"></a>
+            <a href="https://m.me/61579254212969" class="chip" target="_blank" data-key="footerMessenger"></a>
           </div>
         </div>
       </div>
     </footer>
-
+    </div>
   </div>
+  <!-- END: Content Wrapper -->
 
-  <!-- Modal for order confirmation -->
-  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document" aria-labelledby="modal-title">
-      <h3 id="modal-title">Order Submitted</h3>
-      <p id="modalText">Thanks — we received your order and will call to confirm details.</p>
-      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:12px;">
-        <button class="btn btn-ghost" onclick="closeModal()">Close</button>
-      </div>
+
+  <!-- IMAGE MODAL (LIGHTBOX) -->
+  <div id="imageModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="image-modal-content">
+      <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+      <img id="imageModalImg" src="" alt="Enlarged gallery image">
+      <div id="imageModalCaption"></div>
     </div>
   </div>
 
-<script>
-/* --- Unified, corrected ordering script --- */
-const price = 1500;
-const quantityInput = document.getElementById('quantity'); // main form
-const cardQtyInput = document.getElementById('qty');       // product card
-const sidebarQtyInput = document.getElementById('sidebarQty'); // quick-buy
-const totalEl = document.getElementById('total');
-const priceText = document.getElementById('priceText');
-const summary = document.getElementById('summary');
-const modal = document.getElementById('modalBackdrop');
-
-if (!quantityInput || !cardQtyInput || !sidebarQtyInput) {
-  console.warn('Quantity inputs missing in DOM - make sure IDs exist.');
-}
-
-function clampQty(v){ v = Number(v) || 1; return v < 1 ? 1 : Math.floor(v); }
-
-function formatLE(n){ return Number(n).toFixed(2); }
-
-function syncAllQty(q){
-  // keep every input in sync (string compare to avoid extra events)
-  if(String(quantityInput.value) !== String(q)) quantityInput.value = q;
-  if(String(cardQtyInput.value) !== String(q)) cardQtyInput.value = q;
-  if(String(sidebarQtyInput.value) !== String(q)) sidebarQtyInput.value = q;
-}
-
-function updateTotal(){
-  const q = clampQty(quantityInput.value);
-  totalEl.textContent = formatLE(q * price);
-  if (priceText) priceText.textContent = 'LE' + (price).toFixed(0);
-  syncAllQty(q);
-  updateSummaryPreview();
-}
-
-/* Wire input changes to updateTotal and sync */
-quantityInput.addEventListener('input', () => {
-  const q = clampQty(quantityInput.value);
-  syncAllQty(q);
-  updateTotal();
-});
-
-cardQtyInput.addEventListener('input', () => {
-  const q = clampQty(cardQtyInput.value);
-  syncAllQty(q);
-  updateTotal();
-});
-
-sidebarQtyInput.addEventListener('input', () => {
-  const q = clampQty(sidebarQtyInput.value);
-  syncAllQty(q);
-  updateTotal();
-});
-
-/* helper to update the summary card text */
-function updateSummaryPreview(){
-  const q = clampQty(quantityInput.value);
-  summary.innerHTML = `<div style="font-weight:800">${q} × ASH GRILL Roasting Jack</div>
-    <div style="margin-top:6px">Subtotal: LE${(q*price).toFixed(2)}</div>`;
-}
-
-/* used by product card button */
-function openOrderFromCard(){
-  const q = clampQty(cardQtyInput.value);
-  syncAllQty(q);
-  updateTotal();
-  scrollToSection('order');
-}
-
-/* used by "Add to Order" in sidebar */
-function addToCart(){
-  const q = clampQty(sidebarQtyInput.value);
-  syncAllQty(q);
-  updateTotal();
-  scrollToSection('order');
-}
-
-/* Submit to backend - sends field "quantity" (matches Mongoose schema) */
-async function submitOrder(ev){
-  ev.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const addr = document.getElementById('address').value.trim();
-  const qty = clampQty(quantityInput.value);
-
-  if(!name || !phone || !addr){
-    alert('Please fill name, phone and address.');
-    return;
-  }
-
-  const orderData = {
-    product: "ASH GRILL Roasting Jack",
-    quantity: qty,                 // <<--- IMPORTANT: use "quantity"
-    price_each: price,
-    total: (qty * price).toFixed(2),
-    name,
-    phone,
-    address: addr,
-    notes: document.getElementById('notes').value.trim()
-  };
-
-  try {
-    const res = await fetch("http://localhost:5000/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderData)
-    });
-
-    const data = await res.json().catch(() => ({}));
-
-    if (res.ok) {
-      document.getElementById('modalText').textContent =
-        `✅ Thanks ${name}! Order for ${qty} unit(s) received. Total: ${orderData.total} LE. We'll call ${phone} to confirm delivery & payment.`;
-      openModal();
-
-      // reset form and quantities
-      document.getElementById('orderForm').reset();
-      syncAllQty(1);
-      updateTotal();
-    } else {
-      const msg = data.message || `${res.status} ${res.statusText}`;
-      alert('Error submitting order: ' + msg);
-    }
-  } catch (err) {
-    console.error('Order submit failed:', err);
-    alert('Server error — please try again later.');
-  }
-}
-
-/* Clear form helper (keeps quantity at 1) */
-function clearForm(){
-  document.getElementById('orderForm').reset();
-  syncAllQty(1);
-  updateTotal();
-}
-
-/* Modal helpers */
-function openModal(){
-  modal.style.display = 'flex';
-  modal.setAttribute('aria-hidden','false');
-}
-function closeModal(){
-  modal.style.display = 'none';
-  modal.setAttribute('aria-hidden','true');
-}
-
-/* smooth scroll helper */
-function scrollToSection(id){
-  const el = document.getElementById(id);
-  if(!el) return;
-  el.scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-/* initialize */
-syncAllQty(1);
-updateTotal();
-</script>
-
+<script src="script.js"></script>
 
 </body>
 </html>
+
+
+
